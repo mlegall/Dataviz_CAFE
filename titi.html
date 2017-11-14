@@ -1,0 +1,474 @@
+<!DOCTYPE HTML>
+<html>
+<style>
+div {
+    resize: horizontal;
+    margin: 2cm 4cm 3cm 4cm;
+    display: block;
+
+}
+p {
+    margin: 2cm 4cm 3cm 4cm;
+}
+
+img{
+    margin: 0cm 4cm 3cm 4cm;
+}
+
+
+* {margin: 0; padding: 0;}
+
+a {text-decoration: none;}
+
+/* This class is added on scroll */
+.fixed {
+	position: fixed;
+	top: 0;
+	height: 70px;
+	z-index: 1;
+}
+
+body {
+	color: #fff;
+	font-family: 'open-sans-bold', AvenirNext-Medium, sans-serif;
+	font-size: 18px;
+	text-align: center;
+}
+
+h1 {
+	color:#7577cd;
+	margin: 2cm;
+	text-align: left;
+}
+
+/* Navigation Settings */
+nav {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 70px;
+	background: #fff;
+}
+
+nav li {
+	display: inline-block;
+	padding: 24px 10px;
+}
+
+nav li a {
+	color: #757575;
+	text-transform: uppercase;
+}
+
+section {
+	height: 100vh;
+}
+
+/* Screens Settings */
+#screen1 {
+	background: #7577cd;
+}
+
+#screen1 p {
+	padding-top: 200px;
+}
+
+#screen2 {
+	background: #efc94d;
+}
+
+#screen3 {
+	background: #e1793d;
+}
+
+@media only screen and (max-width: 520px) {
+
+	nav li {
+		padding: 24px 4px;
+	}
+
+	nav li a {
+		font-size: 14px;
+	}
+
+}
+</style>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+	<title>CAFE DATAVIZ</title>
+
+
+</head>
+
+
+<body>
+
+<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js'></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/highcharts-more.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script>   $(document).ready(function(){
+	   $(window).bind('scroll', function() {
+	   var navHeight = $( window ).height() -70;
+			 if ($(window).scrollTop() > navHeight) {
+				 $('nav').addClass('fixed');
+			 }
+			 else {
+				 $('nav').removeClass('fixed');
+			 }
+		});
+	});
+</script>
+
+<section id="screen1">
+
+<div class='logo' >
+	 <img src="http://www.ensai.fr/files/_media/images/l_ecole/ensai_logo_dev_transparent.png" style="width:300px; height:150px;float:right;margin:0;padding:50px; margin-bottom:0;" >
+
+
+
+<p style="float:left;margin:0;padding:50px;" align='left'>
+Group :  <br>
+ <i>LE GALL, Marine  <br>
+MALLART, Cyrielle <br> </i>
+ENSAI, Msc Statistics for Smart Data 
+</p>
+</div>
+
+
+<div style="margin:5;float:left">
+<p align='left' style="margin:0;">
+ 
+Bonjour, bienvenu dans notre projet ldf,zlmmmmmmm fz  zefklzegjkaer gaeirgfg,skgsdkgfkgk dfglkdfgkfogkqqqqqqqqqqqqqqqqqdmfg mkrgdf
+dgkfgdf,gdlfgkqfdlgkdfg
+qf
+qf
+fq
+qf
+qfsgegdfgv
+
+<br><br>More information can be found on the enclosed document : <a href="http://ww2.amstat.org/publications/jse/v19n1/depaolo.pdf">Journal of Statistics Education Volume 19, Number 1 (2011)</a> </p>
+</div>
+
+<nav>
+ <ul>
+  	<li><a href="#section1">Section 1 : Global view on sales</a></li> /
+	<li><a href="#section2">Section 2 : Go into details of the sales</a></li> /
+	<li><a href="#section3">Section 3 : Waste</a></li> /
+	<li><a href="#section4">Section 4 :</a></li> /
+	<li><a href="#section5">Section 5 :</a></li>
+ </ul>
+</nav>
+
+</section>
+
+
+<section id="section1">
+<h1>Section 1</h1>
+
+<div  id='container2' class="chart" style="height: 200px; width:50px;margin:0; padding:0;float:'left';">
+<script type='text/javascript'>
+
+$(function () {
+
+    /**
+     * In order to synchronize tooltips and crosshairs, override the
+     * built-in events with handlers defined on the parent element.
+     */
+    $('#container2').bind('mousemove touchmove touchstart', function (e) {
+        var chart,
+            point,
+            i,
+            event;
+
+        for (i = 0; i < Highcharts.charts.length; i = i + 1) {
+            chart = Highcharts.charts[i];
+            event = chart.pointer.normalize(e.originalEvent); // Find coordinates within the chart
+            point = chart.series[0].searchPoint(event, true); // Get the hovered point
+
+            if (point) {
+                point.highlight(e);
+            }
+        }
+    });
+
+    /**
+     * Override the reset function, we don't need to hide the tooltips and crosshairs.
+     */
+    Highcharts.Pointer.prototype.reset = function () {
+        return undefined;
+    };
+
+    /**
+     * Highlight a point by showing tooltip, setting hover state and draw crosshair
+     */
+    Highcharts.Point.prototype.highlight = function (event) {
+        this.onMouseOver(); // Show the hover marker
+        this.series.chart.tooltip.refresh(this); // Show the tooltip
+        this.series.chart.xAxis[0].drawCrosshair(event, this); // Show the crosshair
+    };
+
+    /**
+     * Synchronize zooming through the setExtremes event handler.
+     */
+    function syncExtremes(e) {
+        var thisChart = this.chart;
+
+        if (e.trigger !== 'syncExtremes') { // Prevent feedback loop
+            Highcharts.each(Highcharts.charts, function (chart) {
+                if (chart !== thisChart) {
+                    if (chart.xAxis[0].setExtremes) { // It is null while updating
+                        chart.xAxis[0].setExtremes(e.min, e.max, undefined, false, { trigger: 'syncExtremes' });
+                    }
+                }
+            });
+        }
+    }
+
+   var colors = ['#ff6d02','#dbdbeb','#7577cd','#080957'];
+   var mycol  = ['#ff6d02', 'null', 'null','null'];
+   var activity = { 
+      "datasets": [
+          {
+            "name": "Sales", 
+            "data": [199.95, 195.74, 102.68, 162.88, 101.76, 186.94, 120.18, 228.78, 88.02, 119.57, 172.31, 137.65, 197.56, 70, 97, 181.43, 125.57, 180.63, 75.87, 150.51, 177.41, 153.84, 205.36, 118.54, 138.04, 236.01, 149.58, 206.17, 93.1, 151.91, 217.29, 148.24, 168.08, 130.77, 164.54, 121.41, 127.93, 61.94, 128.59, 159.23, 148.08, 164.86, 74.13, 82.96, 240.87, 151.52, 150.99], 
+            "unit": "$", 
+            "type": "line", 
+            "valueDecimals": 0,
+            "colour": "#dbdbeb"
+          },
+          {
+            "name": "Drinks", 
+            "data": [69, 46, 70, 40, 38, 60, 52, 64, 46, 53, 63, 53, 61, 39, 37, 61, 48, 61, 40, 64, 73, 74, 72, 46, 52, 76, 71, 76, 59, 67, 81, 49, 69, 35, 60, 43, 42, 30, 42, 62, 54, 67, 32, 42, 79, 56, 59], 
+            "unit": "Unit", 
+            "type": "area", 
+            "valueDecimals": 0,
+            'stacking': 'normal',
+          }, {
+            "name": "Sweet", 
+            "data": [ 11, 4, 5, 11, 13, 8, 18, 6, 4, 11, 11, 10, 30, 3, 11, 22, 13, 23, 4, 16, 7, 20, 22, 8, 17, 28, 8, 16, 36, 13, 21, 19, 16, 9, 19, 9, 10, 9, 7, 13, 15, 8, 9, 4, 24, 13, 13], 
+            "unit": "Unit", 
+            "type": "area", 
+            "valueDecimals": 0,
+            "stacking": 'normal',
+          }, {
+            "name": "Savory", 
+            "data": [23, 4, 5, 31, 13, 12, 20, 26, 7, 27, 13, 19, 43, 13, 20, 33, 27, 27, 29, 23, 20, 31, 30, 22, 28, 49, 19, 26, 47, 23, 33, 28, 24, 18, 30, 16, 18, 10, 15, 20, 22, 17, 12, 8, 33, 19, 24], 
+            "unit": "Unit", 
+            "type": "area", 
+            "valueDecimals": 0,
+            "stacking": 'normal'
+            }
+       
+         
+      ]
+    };
+
+var mytype = ['line','area','area','area'];
+        $.each(activity.datasets, function (i, dataset) {
+            $('<div class="chart">')
+                .appendTo('#container2')
+                .highcharts({
+                    chart: {
+                        marginLeft: 40, // Keep all charts left aligned
+                        spacingTop: 0,
+                        spacingBottom: 0,
+			type: mytype[i],
+			width: 1000,
+			height : 100,
+			margin: [0, 0, 0, 0],
+			spacing: [0, 0, 0, 0],
+                    },
+                    title: {
+                        text: dataset.name,
+                        align: 'left',
+                        margin: 0,
+                        x: 30
+                    },
+                    credits: {
+                        enabled: false
+                    },
+                    legend: {
+                        enabled: false
+                    },
+                    xAxis: {
+                       gridLineWidth: 0,
+                        categories: ['1/19/2010', '1/20/2010', '1/21/2010', '1/22/2010', '1/25/2010', '1/26/2010', '1/27/2010', '1/28/2010', '1/29/2010', '2/1/2010', '2/2/2010', '2/3/2010', '2/4/2010', '2/5/2010', '2/8/2010', '2/9/2010', '2/10/2010', '2/11/2010', '2/12/2010', '2/15/2010', '2/16/2010', '2/17/2010', '2/18/2010', '2/19/2010', '2/22/2010', '2/23/2010', '2/24/2010', '2/25/2010', '2/26/2010', '3/1/2010', '3/2/2010', '3/3/2010', '3/4/2010', '3/15/2010', '3/16/2010', '3/17/2010', '3/18/2010', '3/19/2010', '3/22/2010', '3/23/2010', '3/24/2010', '3/25/2010', '3/26/2010', '3/29/2010', '3/30/2010', '3/31/2010', '4/1/2010'],
+                     showEmpty: true,
+                     tickInterval: 46,    
+                     minorGridLineWidth: 0,
+                        lineColor: 'transparent',
+                      labels: {
+                          style: 
+                          {
+                            color: 'black',
+                            fontSize: '15px'
+                          }
+                        }
+                    },
+                    yAxis: {
+                        title: {
+                            text: null
+                        },
+                        tickInterval: 25,
+                        gridLineWidth: 0
+                    },
+                    tooltip: {
+                        positioner: function () {
+                            return {
+                                x: 80, // right aligned
+                                y: 20
+                            };
+                        },
+                        borderWidth: 0,
+                        backgroundColor: 'none',
+                        pointFormat: '{point.y}',
+                        headerFormat: '',
+                        shadow: false,
+                        style: {
+                            fontSize: '15px'
+                        },
+                        valueDecimals: dataset.valueDecimals
+                    },
+                    series: [{
+                        data: dataset.data,
+                        name: dataset.name,
+                        type: dataset.type,
+                        color: colors[i],
+                        fillOpacity: 0.6,
+                        tooltip: {
+                       	   crosshairs: [true, true],
+                            valueSuffix: '' + dataset.unit,
+                            split : false,
+                                borderColor: 'black'
+                                             },
+                        lineColor: mycol[i],
+                        marker : {
+                		enabled: false
+            							},
+				stacking: 'normal'
+
+                       
+                    }]
+                });
+        });
+			});
+
+	</script>
+</div>
+</section>
+
+<section id="section2" >
+<h1>Section 2</h1>
+
+<div id="container" class="chart" style="height: 500px; width: 500px; float:left;" align="left">
+	<script  type='text/javascript'>
+
+	    //<![CDATA[
+		var mycolors = ['#ff6d02','#dbdbeb','#7577cd','#080957'];
+
+	Highcharts.chart('container', {
+			colorAxis: {
+	       		gridLineColor:'transparent',
+	       		tickInterval: 0
+	    },
+	     plotOptions: {
+		series: {
+		    groupPadding: 0.4,
+		    color: mycolors[2],
+		    fillColor:mycolors[2],
+		    medianColor: 'white',
+		    lineWidth: 2,
+		    medianWidth: 3,
+		    stemDashStyle: 'dot',
+		    stemWidth: 0,
+		    whiskerColor: mycolors[2],
+		    whiskerLength: '50%',
+		    whiskerWidth: 2
+
+
+		}
+	    },
+	    chart: {
+		type: 'boxplot',
+		height: 400,
+		width: 700,
+		
+	    },
+	    title: {
+		text: 'Distribution of the sales depending on the day of the week'
+	    },
+	credits: {
+                        enabled: false
+                    },
+
+	    legend: {
+		enabled: false
+	    },
+	    xAxis: {
+		categories: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+		lineColor: 'white',
+		lineWidth: 8,
+		tickColor:'white'
+
+	       
+
+
+	    },
+
+	    yAxis: {
+		title: {
+		    text: 'Sales ($)'
+		},
+	 				tickInterval: 148,
+		plotLines: [{
+		    value: 148,
+		    color: mycolors[2],
+		    width: 1,
+		    label: {
+		        text: 'Theoretical mean: 932',
+		        align: 'center',
+		        style: {
+		            color: 'transparent'
+		        }
+		    }
+		}]
+	    },
+
+	    series: [{
+		name: 'Sales',
+		data: [
+	[82.96,101.76 ,128.59 ,138.04 ,151.91 ],
+	[159.230 ,172.310 ,184.185 ,217.290 ,240.870], 
+	[120.18 ,125.57 , 148.16 ,151.52,153.84 ],
+	[102.680 ,150.990  ,174.355 ,205.360 ,228.780],
+	[61.940, 72.065, 81.945,  105.820, 118.540]
+		],
+		tooltip: {
+		    headerFormat: '<em>Sales done on {point.key}</em><br/>'
+		}
+	    ,
+	    }]
+
+	});
+	    //]]>
+	    //]]>
+
+	</script>
+</div>
+</section>
+
+<section id="section3">
+<h1>Section 3</h1>
+</section>
+
+<section id="section4">
+<h1>Section 4</h1>
+</section>
+
+<section id="section5">
+<h1>Section 5</h1>
+</section>
+</body>
+</html>
