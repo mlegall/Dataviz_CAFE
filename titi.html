@@ -92,6 +92,7 @@ nav li a {
 
 section{
 	clear: both;
+	padding: 50px;
 
 	}
 /* Stat descriptive CSS */
@@ -136,6 +137,10 @@ thead th {
 	float: left;
 	max-height: 500px;
 
+}
+.highcharts-g1aisdx-0{
+ 	height: 500;
+	width: 1000;
 }
 .chart{
 	margin:0;
@@ -207,7 +212,7 @@ label {
 	});
 </script>
 
-<section id="screen1" style="height:100vh;">
+<section id="screen1" style="height:100vh;margin:0; padding:0;">
 
 <div class='logo' >
 	 <img src="http://www.ensai.fr/files/_media/images/l_ecole/ensai_logo_dev_transparent.png" style="width:300px; height:150px;float:right;margin:0;padding:50px; margin-bottom:0;" >
@@ -695,7 +700,7 @@ var mytype = ['line','area','area','area'];
 
 <section id="section3">
 <h1>Section 3</h1>
-<div id="container" class="chart">
+<div id="container" class="chart" style="width: 1000px; height: 500px;">
 	<script  type='text/javascript'>
 
 	    //<![CDATA[
@@ -804,7 +809,9 @@ var mytype = ['line','area','area','area'];
 <section id="section35" >
 <h1>Section 3.5</h1>
 
-<div id="container35" class="chart" style="height:1500;"></div>
+<div id="container35" class="chart" style="width: 1000px; height: 500px;"></div>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
 
 
 <script type='text/javascript'>
@@ -823,6 +830,7 @@ Highcharts.chart('container35', {
         title: {
             enabled: true,
             text: 'Temperature (°C)',
+style:{	fontSize:'20px'}
        
         },
         lineColor: 'transparent',
@@ -832,13 +840,22 @@ Highcharts.chart('container35', {
         tickLength :0,
         tickSize: 0,
         gridLineWidth:0,
+	labels:{
+style:{	fontSize:'20px'}}
     },
     yAxis: {
         title: {
-            text: 'Units sold (in cups)'
+            text: 'Units sold (in cups)',
+		style:{	fontSize:'20px'}
         },
         color: 'transparent',
         gridLineWidth:0,
+	labels:{
+		style:{	
+			fontSize:'20px'
+			}
+		}
+  
     },
     legend: {
         layout: 'vertical',
@@ -846,13 +863,13 @@ Highcharts.chart('container35', {
         verticalAlign: 'top',
         x: 70,
         y: 20,
-        floating: false,
+        floating: true,
         backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF',
         borderWidth: 0,
 itemStyle: {
             color: '#000000',
-            fontWeight: 'bold',
-            fontSize: '15px'
+           
+            fontSize: '20px'
         },
     },
     plotOptions: {
@@ -1210,8 +1227,8 @@ d3.csv('data.csv',function (data) {
   // Variables
   var body = d3.select('#container5')
   var margin = { top: 70, right:0, bottom: 50, left: 80 }
-  var h = 500 - margin.top - margin.bottom
-  var w = 500 - margin.left - margin.right
+  var h = 500 - margin.top - margin.bottom +15
+  var w = 500 - margin.left - margin.right +15
   var formatPercent = d3.format('.2%')
   var colorScale = d3.scale.category20b().range(["#6800E5","#750DE6", "#821AE7", "#8F27E9", "#9C34EA", "#9000D2", 
     "#A941EC", "#B64EED", "#C35BEE", "#D068F0", "#DD75F1", "#EA82F3"])
