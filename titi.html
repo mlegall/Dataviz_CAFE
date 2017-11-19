@@ -92,6 +92,7 @@ nav li a {
 
 section{
 	clear: both;
+
 	}
 /* Stat descriptive CSS */
 #result {
@@ -498,7 +499,7 @@ zefzefzefzezer<br></div>
 
 <section id="section2">
 <h1>Section 2</h1>
-<div  id='container2' class="chart" style="min-width: 320px; max-width: 800px;height: 50px;clear:both;">
+<div  id='container2' class="chart" style="min-width: 320px; max-width: 800px;clear:both;">
 <script type='text/javascript'>
 
 $(function () {
@@ -919,11 +920,18 @@ Highcharts.chart('container4', {
     title: {
         text: 'Total daily wastes',
 	align: 'left',
+
+style:{
+			fontSize: '30px'},
+
+
     },
 
     xAxis: {
-    		tickWidth:0, 
+    	tickWidth:0, 
         categories: ['Week1','Week2','Week3','Week4','Week5','Week6','Week7','Week8','Week9','Week10',],
+labels:{style:{
+			fontSize: '20px'}},
 				plotLines:[{
 				color : "#ff6d02",
         value : 6.5,
@@ -931,7 +939,9 @@ Highcharts.chart('container4', {
         zIndex: 4,
         label : {
         	text : "Springbreak week",
-          align : "left",
+          	align : "left",
+		style:{
+			fontSize: '20px'},
         }       
         }]
     },
@@ -940,6 +950,10 @@ Highcharts.chart('container4', {
         categories: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
         title: null,
         reversed :true,
+	labels:{
+style:{
+			fontSize: '20px'},
+	},
     },
 
     colorAxis: {
@@ -956,7 +970,11 @@ Highcharts.chart('container4', {
         margin: 0,
         verticalAlign: 'top',
         y: 25,
-        symbolHeight: 280
+        symbolHeight: 380,
+labels:{
+style:{
+			fontSize: '20px'},
+	},
     },
 
     tooltip: {
