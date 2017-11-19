@@ -3,7 +3,6 @@
 <style>
 div {
     resize: horizontal;
-    margin: 2cm 4cm 3cm 4cm;
     display: block;
 
 }
@@ -33,13 +32,13 @@ body {
 	font-family: 'open-sans-bold', AvenirNext-Medium, sans-serif;
 	font-size: 18px;
 	text-align: center;
+	margin: 50px;
 }
 
 h1 {
 	color:#7577cd;
-	margin: 2cm;
 	text-align: left;
-	padding:0;
+	padding:50px 50px 50px 0px;
 }
 
 /* Navigation Settings */
@@ -61,9 +60,6 @@ nav li a {
 	text-transform: uppercase;
 }
 
-section {
-	height: 100vh;
-}
 
 /* Screens Settings */
 #screen1 {
@@ -94,20 +90,28 @@ section {
 
 }
 
+section{
+	clear: both;
+	}
+/* Stat descriptive CSS */
 #result {
     text-align: right;
     color: gray;
     min-height: 2em;
+    float: left;
 }
 #table-sparkline {
-    margin: 0 auto;
+    margin: 0;
     border-collapse: collapse;
 }
 th {
     font-weight: bold;
     text-align: left;
+    padding: 5px;
+    border-bottom: 1px solid silver;
+    height: 20px;
 }
-td, th {
+td{
     padding: 5px;
     border-bottom: 1px solid silver;
     height: 20px;
@@ -126,15 +130,53 @@ thead th {
     padding: 8px;
 }
 .highcharts-container {
-	padding:0;
+
 	margin:0;
+	float: left;
+	max-height: 500px;
 
 }
 .chart{
 	margin:0;
 	min-height: 2em;
-	margin: 3cm;
+	float: left;
+	padding:50;
 }
+/* sCATTER STYLE */
+.axis text {
+  font: 20px sans-serif;
+  margin : 5px;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: 10;
+  shape-rendering: crispEdges;
+}
+
+.bar {
+  fill: steelblue;
+  fill-opacity: .9;
+}
+
+.bar:hover {
+  fill: blue;
+}
+
+label {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+	stroke:none;
+}
+.comment{
+	text-align: left;
+	float:	right;
+	padding:0;
+}
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
 </style>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -164,7 +206,7 @@ thead th {
 	});
 </script>
 
-<section id="screen1">
+<section id="screen1" style="height:100vh;">
 
 <div class='logo' >
 	 <img src="http://www.ensai.fr/files/_media/images/l_ecole/ensai_logo_dev_transparent.png" style="width:300px; height:150px;float:right;margin:0;padding:50px; margin-bottom:0;" >
@@ -180,8 +222,8 @@ ENSAI, Msc Statistics for Smart Data
 </div>
 
 
-<div style="margin:5;float:left;">
-<p align='left' style="margin:0;">
+<div style="float:left;">
+<p align='left' style="margin:50;">
  
 Cafe dataset : Vizualisation
 
@@ -215,19 +257,21 @@ Context: the data is presented in the paper by DePaolo and Robinson https://www.
 
 <nav>
  <ul>
-  	<li><a href="#section1">Section 1 : </a></li> /
-	<li><a href="#section2">Section 2 : </a></li> /
-	<li><a href="#section3">Section 3 : </a></li> /
+  	<li><a href="#section1">Section 1 :</a></li> /
+	<li><a href="#section2">Section 2 :</a></li> /
+	<li><a href="#section3">Section 3 :</a></li> /
 	<li><a href="#section4">Section 4 :</a></li> /
 	<li><a href="#section5">Section 5 :</a></li>
  </ul>
 </nav>
 
 </section>
-<section id="section1" style="height: 150vh;">
+<section id="section1">
 <h1>Section 1</h1>
-<div id="result" style="float:right;">
-<table id="table-sparkline">
+<div id="comment" style="float:right;text-align: left;">TESTfdssssssssssssssssssssssssssssssssssss<br>
+zefzefzefzezer<br></div>
+<div id="result" style="float:left;" >
+<table id="table-sparkline" class="chart">
     <thead>
         <tr>
             <th>Name</th>
@@ -251,8 +295,6 @@ Context: the data is presented in the paper by DePaolo and Robinson https://www.
 	    <td>4</td>
 <td data-sparkline= "  5, 6, 8, 4, 3, 7, 6, 0, 3, 2, 3, 4, 9, 1, 3, 8, 7, 8, 2, 3, 8, 6, 4, 4, 6, 7, 6, 5, 2, 3, 8, 4, 4, NA, 6, 7, 3, 5, 2, 4, 8, 4, 6, 1, 2, 6, 4, 4  " />
                                                                                                                                                                                                                          
-
-
         </tr>
         <tr>
             <th>Bread.Sand.Waste</th>
@@ -263,9 +305,6 @@ Context: the data is presented in the paper by DePaolo and Robinson https://www.
 	    <td>2.14</td>
 	    <td>0</td>
 <td data-sparkline= "  3, 8, 2, 2, 0, 1, 6, 0, 4, 6, 7, 4, 1, 1, 5, 0, 0, 0, 0, 3, 0, 0, 2, 0, 0, 0, 0, 3, 0, 2, 0, 0, 0, NA, 0, 1, 3, 3, 0, 2, 0, 0, 0, 1, 4, 0, 0, 0  " />                                                                                                                                                                                                                            
-
-
-
         </tr>
         <tr>
             <th>Wraps.Sold</th>
@@ -277,7 +316,6 @@ Context: the data is presented in the paper by DePaolo and Robinson https://www.
 	    <td>13</td>
 <td data-sparkline= "  25, 7, 14, 5, 10, 5, 19, 7, 4, 13, 10, 15, 13, 6, 14, 16, 12, 19, 4, 12, 22, 8, 19, 10, 16, 23, 15, 22, 5, 9, 21, 13, 14, NA, 17, 19, 13, 15, 4, 13, 14, 9, 18, 4, 9, 25, 15, 16  " />                                                                                                                                                                                           
                                                                                                                                                                                           
-
         </tr>
         <tr>
             <th>Wraps.Waste</th>
@@ -299,7 +337,6 @@ Context: the data is presented in the paper by DePaolo and Robinson https://www.
 	    <td>4.79</td>
 	    <td>5</td>
 <td data-sparkline= "  5, 3, 4, 5, 8, 1, 6, 6, 0, 3, 5, 4, 14, 2, 2, 11, 5, 12, 0, 6, 1, 9, 10, 4, 9, 12, 1, 8, 28, 5, 10, 8, 6, NA, 3, 5, 3, 1, 5, 3, 7, 8, 3, 3, 3, 11, 1, 6  " />                                                                                                                                                                                                                    
-
 
 
       </tr>
@@ -362,10 +399,6 @@ Context: the data is presented in the paper by DePaolo and Robinson https://www.
 	    <td>0</td>
 <td data-sparkline= "  4, 3, 3, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, NA, 0, 0, 0, 0, 0, 0, 2, 0, 0, 1, 1, 0, 0, 0  " />                                                                                                                                                                                                                            
                                                                                                                                                                                                                                 
-
-
-
-
         </tr>
         <tr>
             <th>Chips</th>
@@ -376,7 +409,6 @@ Context: the data is presented in the paper by DePaolo and Robinson https://www.
 	    <td>5.52</td>
 	    <td>9</td>
 <td data-sparkline= "  12, 0, 0, 20, 0, 4, 2, 20, 3, 16, 2, 9, 13, 10, 9, 11, 14, 4, 25, 7, 13, 11, 8, 14, 11, 21, 11, 10, 11, 10, 12, 9, 8, NA, 9, 11, 7, 8, 1, 8, 7, 7, 9, 3, 4, 9, 6, 11  " />                                                                                                                                                                                                       
-                                                                                                                                                                                                                      
 
         </tr>
 	<tr>
@@ -466,8 +498,7 @@ Context: the data is presented in the paper by DePaolo and Robinson https://www.
 
 <section id="section2">
 <h1>Section 2</h1>
-
-<div  id='container2' class="chart" style="margin:0; padding:0;">
+<div  id='container2' class="chart" style="min-width: 320px; max-width: 800px;height: 50px;clear:both;">
 <script type='text/javascript'>
 
 $(function () {
@@ -615,32 +646,34 @@ var mytype = ['line','area','area','area'];
                         gridLineWidth: 0
                     },
                     tooltip: {
-                        positioner: function () {
-                            return {
-                                x: 80, // right aligned
-                                y: 20
-                            };
-                        },
+                         positioner: function () {
+                        return {
+                            x: this.chart.chartWidth - this.label.width, // right aligned
+                            y: 20// align to title
+                        };
+},
                         borderWidth: 0,
                         backgroundColor: 'none',
                         pointFormat: '{point.y}',
                         headerFormat: '',
                         shadow: false,
                         style: {
-                            fontSize: '15px'
+                            fontSize: '18px'
                         },
-                        valueDecimals: dataset.valueDecimals
+                        valueDecimals: dataset.valueDecimals,
+			split:true,
+
                     },
                     series: [{
                         data: dataset.data,
                         name: dataset.name,
                         type: dataset.type,
                         color: colors[i],
-                        fillOpacity: 0.6,
+                        fillOpacity: 0.9,
                         tooltip: {
                        	   crosshairs: [true, true],
                             valueSuffix: '' + dataset.unit,
-                            split : false,
+                            split : true,
                                 borderColor: 'black'
                                              },
                         lineColor: mycol[i],
@@ -659,10 +692,9 @@ var mytype = ['line','area','area','area'];
 </div>
 </section>
 
-<section id="section3" >
+<section id="section3">
 <h1>Section 3</h1>
-
-<div id="container" class="chart" style="height: 500px; width: 500px; float:right;">
+<div id="container" class="chart">
 	<script  type='text/javascript'>
 
 	    //<![CDATA[
@@ -699,6 +731,7 @@ var mytype = ['line','area','area','area'];
 	    title: {
 		text: 'Distribution of the sales depending on the day of the week',
 		align: 'left',
+	
 	    },
 	credits: {
                         enabled: false
@@ -711,29 +744,37 @@ var mytype = ['line','area','area','area'];
 		categories: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
 		lineColor: 'white',
 		lineWidth: 8,
-		tickColor:'white'
-
-	       
-
+		tickColor:'white',
+		labels:{
+			style:{
+				fontSize:'19px',
+				}
+			},
 
 	    },
 
 	    yAxis: {
 		title: {
-		    text: 'Sales ($)'
+		    text: 'Sales ($)',
+		    style:{
+		    fontSize:'20px',}
 		},
-	 				tickInterval: 148,
+		labels:{
+			style:{
+				fontSize:'19px',
+				}
+			},
+
+	    
+	 	tickInterval: 148,
 		plotLines: [{
 		    value: 148,
 		    color: mycolors[2],
 		    width: 1,
 		    label: {
-		        text: 'Theoretical mean: 932',
-		        align: 'center',
-		        style: {
-		            color: 'transparent'
-		        }
-		    }
+		        text: 'Global median',
+		        align: 'right',
+			    }
 		}]
 	    },
 
@@ -759,17 +800,111 @@ var mytype = ['line','area','area','area'];
 	</script>
 </div>
 </section>
+<section id="section35" >
+<h1>Section 3.5</h1>
 
+<div id="container35" class="chart" style="height:1500;"></div>
+
+
+<script type='text/javascript'>
+Highcharts.chart('container35', {
+    chart: {
+        type: 'scatter',
+        zoomType: 'xy'
+    },
+    credits:{
+	enabled:false},
+    title: {
+        text: 'Influence of the temperature on the sales of drinks'
+    },
+
+    xAxis: {
+        title: {
+            enabled: true,
+            text: 'Temperature (°C)',
+       
+        },
+        lineColor: 'transparent',
+        startOnTick: true,
+        endOnTick: true,
+        showLastLabel: true,
+        tickLength :0,
+        tickSize: 0,
+        gridLineWidth:0,
+    },
+    yAxis: {
+        title: {
+            text: 'Units sold (in cups)'
+        },
+        color: 'transparent',
+        gridLineWidth:0,
+    },
+    legend: {
+        layout: 'vertical',
+        align: 'left',
+        verticalAlign: 'top',
+        x: 70,
+        y: 20,
+        floating: false,
+        backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF',
+        borderWidth: 0,
+itemStyle: {
+            color: '#000000',
+            fontWeight: 'bold',
+            fontSize: '15px'
+        },
+    },
+    plotOptions: {
+        scatter: {
+        		events: {
+   						mouseOver: function () {
+        					this.chart.series[this.index].update({
+            							color: '#7577cd'
+       								 });
+    							},
+
+    					mouseOut: function () {
+									this.chart.series[this.index].update({
+            							color: "#dbdbeb"
+       								 });                           
+    						 }
+						},
+            lineWidth:0,
+            tooltip: {
+                headerFormat: '<b>{series.name}</b><br>',
+                pointFormat: '{point.y} cups of <b style="text-transform: lowercase;">{series.name}</b>'
+            }
+        }
+    },
+    series: [{
+        name: 'Soda',
+        color: "#dbdbeb",
+        data: [[27, 45], [24, 42], [17, 55], [13, 26], [9, 26], [13, 50], [19, 45], [17, 50], [8, 30], [18, 24], [18, 33], [18, 35], [16, 48], [9, 24],// [8, NA],
+            [7, 43], [4, 34], [4, 54], [4, 36], [2, 22], [1, 37], [-2, 33], [1, 36], [2, 25], [4, 11], [1, 35], [-2, 24], [-2, 39], [-3, 26], [-1, 15], [-2, 31], [-3, 24], [-2, 31], [-1, 17], [2, 14], [4, 29], [1, 20], [3, 33], [3, 19], [-7, 12], [1, 27], [1, 15], [-3, 33], [2, 13], [4, 13], [4, 23], [1, 13], [2, 20]]
+    },{
+    	name:'Juice',
+      color: "#dbdbeb",
+      data : [[27, 3], [24, 4], [17, 10], [13, 0], [9, 2], [13, 4], [19, 5], [17, 6], [8, 7], [18, 3], [18, 5], [18, 4], [16, 4], [9, 3], //[8,NA],
+      [7, 5], [4, 4], [4, 7], [4, 7], [2, 21], [1, 4], [-2, 5], [1, 5], [2, 2], [4, 4], [1, 12], [-2, 2], [-2, 5], [-3, 7], [-1, 2], [-2, 2], [-3, 3], [-2, 8], [-1, 2], [2, 1], [4, 6], [1, 6], [3, 0], [3, 7], [-7, 4], [1, 6], [1, 5], [-3, 4], [2, 5], [4, 0], [4, 13], [1, 0], [2, 8]]    
+    },{
+        name: 'Coffee',
+       	color: "#dbdbeb",
+        data: [[27, 11], [24, 10], [17, 14], [13, 16], [9, 4], [13, 13], [19, 4], [17, 6], [8, 5], [18, 3], [18, 4], [18, 4], [16, 8], [9, 8],// [8, NA],
+        [7, 21], [4, 11], [4, 20], [4, 24], [2, 16], [1, 35], [-2, 33], [1, 35], [2, 25], [4, 31], [1, 25], [-2, 48], [-2, 29], [-3, 31], [-1, 23], [-2, 28], [-3, 21], [-2, 22], [-1, 18], [2, 24], [4, 26], [1, 27], [3, 30], [3, 27], [-7, 30], [1, 31], [1, 32], [-3, 23], [2, 20], [4, 27], [4, 34], [1, 33], [2, 41]]
+    }
+    ]
+});</script>
+</section>
 <section id="section4">
 <h1>Section 4</h1>
-<script src="https://code.highcharts.com/highcharts.js"></script>
+
 <script src="https://code.highcharts.com/modules/heatmap.js"></script>
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
 
-<div  id='container3' class="chart" style="height: 500px; width: 1000px;margin:0; padding:0;float:'left';"></div>
+<div  id='container4' class="chart" style="height: 500px; width: 1000px;"></div>
 <script type='text/javascript'>
 
-Highcharts.chart('container3', {
+Highcharts.chart('container4', {
 		credits:{
     	enabled : false,
     }, 
@@ -854,7 +989,7 @@ Highcharts.chart('container3', {
 
 
 
-<script type='text/javascript' style='margin:0;padding:0'>
+<script type='text/javascript'>
 
 Highcharts.SparkLine = function (a, b, c) {
     var hasRenderToArg = typeof a === 'string' || a.nodeName,
@@ -1012,9 +1147,185 @@ doChunk();
 
 </script>
 
-
+<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 <section id="section5">
 <h1>Section 5</h1>
+<div id='container5' class='chart' >
+<script type='text/javascript'>
+d3.csv('data.csv',function (data) {
+// CSV section
+  var body = d3.select('#container5')
+  var selectData = [ { "text" : "Numbers of Items ordered" },
+                     { "text" : "Sales done on the previous Week" },
+                     { "text" : "Actual Sales" },
+		     { "text" : "Time"},
+                   ]
+
+  // Select X-axis Variable
+  var span = body.append('span')
+    .text('Select X-Axis variable: ')
+  var yInput = body.append('select')
+      .attr('id','xSelect')
+      .on('change',xChange)
+    .selectAll('option')
+      .data(selectData)
+      .enter()
+    .append('option')
+      .attr('value', function (d) { return d.text })
+      .text(function (d) { return d.text ;})
+  body.append('br')
+
+  // Select Y-axis Variable
+  var span = body.append('span')
+      .text('Select Y-Axis variable: ')
+  var yInput = body.append('select')
+      .attr('id','ySelect')
+      .on('change',yChange)
+    .selectAll('option')
+      .data(selectData)
+      .enter()
+    .append('option')
+      .attr('value', function (d) { return d.text })
+      .text(function (d) { return d.text ;})
+  body.append('br')
+
+  // Variables
+  var body = d3.select('#container5')
+  var margin = { top: 70, right:0, bottom: 50, left: 80 }
+  var h = 500 - margin.top - margin.bottom
+  var w = 500 - margin.left - margin.right
+  var formatPercent = d3.format('.2%')
+  var colorScale = d3.scale.category20b().range(["#6800E5","#750DE6", "#821AE7", "#8F27E9", "#9C34EA", "#9000D2", 
+    "#A941EC", "#B64EED", "#C35BEE", "#D068F0", "#DD75F1", "#EA82F3"])
+  var xScale = d3.scale.linear()
+    .domain([
+      d3.min([0,d3.min(data,function (d) { return d['Numbers of Items ordered'] })]),
+      d3.max([0,d3.max(data,function (d) { return d['Numbers of Items ordered'] })])
+      ])
+    .range([0,w])
+  var yScale = d3.scale.linear()
+    .domain([
+      d3.min([0,d3.min(data,function (d) { return d['Numbers of Items ordered'] })]),
+      d3.max([0,d3.max(data,function (d) { return d['Numbers of Items ordered'] })])
+      ])
+    .range([h,0])
+  // SVG
+  var svg = body.append('svg')
+      .attr('height',h + margin.top + margin.bottom)
+      .attr('width',w + margin.left + margin.right)
+    .append('g')
+      .attr('transform','translate(' + margin.left + ',' + margin.top + ')')
+  // X-axis
+  var xAxis = d3.svg.axis()
+    .scale(xScale)
+    .ticks(3)
+    .orient('bottom')
+  // Y-axis
+  var yAxis = d3.svg.axis()
+    .scale(yScale)
+    .ticks(3)
+    .orient('left')
+  // Circles
+  var circles = svg.selectAll('circle')
+      .data(data)
+      .enter()
+    .append('circle')
+      .attr('cx',function (d) { return xScale(d['Numbers of Items ordered']) })
+      .attr('cy',function (d) { return yScale(d['Numbers of Items ordered']) })
+      .attr('r','10')
+      .attr('stroke','transparent')
+      .attr('stroke-width',0)
+      .attr('fill',function (d,i) { return colorScale(i) })
+      .on('mouseover', function () {
+        d3.select(this)
+          .transition()
+          .duration(500)
+          .attr('r',20)
+          .attr('stroke-width',3)
+      })
+      .on('mouseout', function () {
+        d3.select(this)
+          .transition()
+          .duration(500)
+          .attr('r',10)
+          .attr('stroke-width',1)
+      })
+    .append('title') // Tooltip
+      .text(function (d) { return d.variable +
+                           
+                           '\nPrevious sales: ' + d['Sales done on the previous Week'] +
+			   '\nOrders size: ' + d['Numbers of Items ordered'] +
+                           '\nAnticipation: ' + formatPercent(d['Numbers of Items ordered']/d['Sales done on the previous Week']-1)+
+			   '\nActual num of sold items: ' + d['Actual Sales']+				
+			   '\nReal evolution:' + formatPercent(d['Actual Sales']/d['Sales done on the previous Week']-1)
+			  })
+  // X-axis
+  svg.append('g')
+      .attr('class','axis')
+      .attr('id','xAxis')
+      .attr('transform', 'translate(0,' + h + ')')
+      .call(xAxis)
+    .append('text') // X-axis Label
+      .attr('id','xAxisLabel')
+      .attr('y',30)
+      .attr('x',w)
+      .attr('dy','.71em')
+      .style('text-anchor','end')
+      .text('Numbers of Items ordered')
+  // Y-axis
+  svg.append('g')
+      .attr('class','axis')
+      .attr('id','yAxis')
+      .call(yAxis)
+    .append('text') // y-axis Label
+      .attr('id', 'yAxisLabel')
+      .attr('transform','rotate(-90)')
+      .attr('x',0)
+      .attr('y',-60)
+      .attr('dy','.71em')
+      .style('text-anchor','end')
+      .text('Numbers of Items ordered')
+
+  function yChange() {
+    var value = this.value // get the new y value
+    yScale // change the yScale
+      .domain([
+        d3.min([0,d3.min(data,function (d) { return d[value] })]),
+        d3.max([0,d3.max(data,function (d) { return d[value] })])
+        ])
+    yAxis.scale(yScale) // change the yScale
+    d3.select('#yAxis') // redraw the yAxis
+      .transition().duration(1000)
+      .call(yAxis)
+    d3.select('#yAxisLabel') // change the yAxisLabel
+      .text(value)    
+    d3.selectAll('circle') // move the circles
+      .transition().duration(1000)
+      .delay(function (d,i) { return i*100})
+        .attr('cy',function (d) { return yScale(d[value]) })
+  }
+
+  function xChange() {
+    var value = this.value // get the new x value
+    xScale // change the xScale
+      .domain([
+        d3.min([0,d3.min(data,function (d) { return d[value] })]),
+        d3.max([0,d3.max(data,function (d) { return d[value] })])
+        ])
+    xAxis.scale(xScale) // change the xScale
+    d3.select('#xAxis') // redraw the xAxis
+      .transition().duration(1000)
+      .call(xAxis)
+    d3.select('#xAxisLabel') // change the xAxisLabel
+      .transition().duration(1000)
+      .text(value)
+    d3.selectAll('circle') // move the circles
+      .transition().duration(1000)
+      .delay(function (d,i) { return i*100})
+        .attr('cx',function (d) { return xScale(d[value]) })
+  }
+})</script>
+</div>
 </section>
 </body>
 </html>
