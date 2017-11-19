@@ -7,7 +7,8 @@ div {
 
 }
 p {
-    margin: 2cm 4cm 3cm 4cm;
+
+	color: gray;
 }
 
 img{
@@ -17,7 +18,8 @@ img{
 
 * {margin: 0; padding: 0;}
 
-a {text-decoration: none;}
+a {text-decoration: none;
+}
 
 /* This class is added on scroll */
 .fixed {
@@ -145,7 +147,7 @@ thead th {
 .chart{
 	margin:0;
 	min-height: 2em;
-	float: left;
+	float: right;
 	padding:50;
 }
 /* sCATTER STYLE */
@@ -176,10 +178,14 @@ label {
   right: 10px;
 	stroke:none;
 }
-.comment{
-	text-align: left;
-	float:	right;
+#comment{
+	text-align: justify;
+	float:	left;
 	padding:0;
+	width: 800px;
+	color: gray;
+	margin:0;
+	line-height: 1.35;
 }
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -219,7 +225,7 @@ label {
 
 
 
-<p style="float:left;margin:0;padding:50px;" align='left'>
+<p style="float:left;margin:0;padding:50px;color:white;" align='left'>
 Group :  <br>
  <i>LE GALL, Marine  <br>
 MALLART, Cyrielle <br> </i>
@@ -229,35 +235,12 @@ ENSAI, Msc Statistics for Smart Data
 
 
 <div style="float:left;">
-<p align='left' style="margin:50;">
+<p align='left' style="margin:100;color:white;padding:50;">
  
-Cafe dataset : Vizualisation
-
-Intro : 
-	What is what we have ? Cafe data
-
-	What is our angle ?
-We feel that the exploration and analysis of data from a customer-based business like a cafe does not have to be only restrospective, 
-but can also be a significant asset to better the offer and make marketing decisions optimal.
-We thus chose to redact this project not from the point of view of students who would discover the subject several years after the collection of the data, 
-but as 'advisors' that could help this project become more cost-efficient.
-
-	What is the main articulation of this project?
-In this perspective, we decided on two main axis : to rise the sales of products and reduce the waste. One rises their profit if they raise sales and limits the losses.
-Achieving the first goal would be done by understanding the context in which each product is more likely to be sold, so as to market them the right way at the right moment.
-In a second time, by understanding the mechanics behind the wastes we may make management of the stock more efficient.
-But firstly, as the stocks of the beverages are not as perishable as the ones for other food products, we will try to understand them on their own.
-
-Context: the data is presented in the paper by DePaolo and Robinson https://www.dropbox.com/home/Smart_Data_Sharing/Dataviz_case_studies/Cyrielle-Marine?preview=depaolo.pdf
-	Present the data : 
-	when 
-
-
-	where 
-	who 
-	what ?	
-
-
+We feel that the exploration and analysis of data from a customer-based business like a cafe does not have to be only restrospective, but can also be a significant asset to better the offer and make marketing decisions optimal. We thus chose to redact this project not from the point of view of students who would discover the subject several years after the collection of the data, but as 'advisors' that could help this project become more cost-efficient.
+<br><br>
+In this perspective, we decided on two main axis : to rise the sales of products and reduce the waste. One rises their profit if they raise sales and limits the losses. Achieving the first goal would be done by understanding the context in which each product is more likely to be sold, so as to market them the right way at the right moment. In a second time, by understanding the mechanics behind the wastes we may make management of the stock more efficient. But firstly, as the stocks of the beverages are not as perishable as the ones for other food products, we will try to understand them on their own.
+	
 <br><br>More information can be found on the enclosed document : <a href="http://ww2.amstat.org/publications/jse/v19n1/depaolo.pdf">Journal of Statistics Education Volume 19, Number 1 (2011)</a> </p>
 </div>
 
@@ -266,17 +249,24 @@ Context: the data is presented in the paper by DePaolo and Robinson https://www.
   	<li><a href="#section1">Section 1 :</a></li> /
 	<li><a href="#section2">Section 2 :</a></li> /
 	<li><a href="#section3">Section 3 :</a></li> /
-	<li><a href="#section4">Section 4 :</a></li> /
-	<li><a href="#section5">Section 5 :</a></li>
+	<li><a href="#section35">Section 4 :</a></li> /
+	<li><a href="#section4">Section 5 :</a></li> /
+	<li><a href="#section5">Section 6 :</a></li>
  </ul>
 </nav>
 
 </section>
 <section id="section1">
 <h1>Section 1</h1>
-<div id="comment" style="float:right;text-align: left;">TESTfdssssssssssssssssssssssssssssssssssss<br>
-zefzefzefzezer<br></div>
-<div id="result" style="float:left;" >
+<div id="comment">
+This cafe was created by a team of ten senior-level business strategy students. In this university, the College of Business and the College of Education were located in two different buildings, where the College of Business only had a sandwich shop. However, after the renovation and re-opening of a new deli in the College of Education, the decision was made to close the sandwich shop. It led to discontent from the few customers left at the College of Business, but a traditional for-profit establishment would not have been able to survive, hence the creation of this student-driven café.
+Some noticeable features of this database are the fact that it starts on a Tuesday and stops on a Thursday, thus leaving the first and last week uncomplete. There is also some missing data on the Friday corresponding to the last Friday before the Springbreak. The week of Springbreak is thus to be acknowledged, as there is not one week with null values in the dataset but just a cut in the dates which could lead to misinterpretation.<br><br>
+The temperatures are taken from the weather website called,<a href='http://www.wunderground.com/history/'>Weather Underground</a>, which explains that a temperature has been recorded for the Friday before Springbreak while no other data is available for that day.<br><br>
+What is more, there is in the database the number of items sold and wasted for “solid” food items such as wraps, muffins, cookies or fruit cups. But as for drinks such as coffee, juice or soda, there is no waste and only the number or cups solds, most probably because the juices and sodas were delivered in cans. <br><br>
+The main variables and their main statistics are presented in the following table.
+<br>These are the original variables given in the database. However, we want to draw the reader’s attention to the fact that, for ease of understanding for a European reader, we have converted the temperatures in Celsius degrees in the rest of the page.
+</div>
+<div id="result" style="float:right;" >
 <table id="table-sparkline" class="chart">
     <thead>
         <tr>
@@ -504,6 +494,7 @@ zefzefzefzezer<br></div>
 
 <section id="section2">
 <h1>Section 2</h1>
+<div id="comment"></div>
 <div  id='container2' class="chart" style="min-width: 320px; max-width: 800px;clear:both;">
 <script type='text/javascript'>
 
@@ -699,7 +690,13 @@ var mytype = ['line','area','area','area'];
 </section>
 
 <section id="section3">
-<h1>Section 3</h1>
+<h1>Section 3 : More sales on the T-days</h1>
+<div id="comment">
+Total sales do not happen at the same level every day. While the variation in levels of sales are higher on Thursdays and limited on Wednesdays for example, it is clear that Tuesdays and Thursdays are the busiest days. The low affluence on Mondays and Fridays could be explained by the proximity with the weekend : potential customers stay on a longer weekend or leave the campus early after class on Friday. Thus they do not take the time to buy some food at the café.<br><br>
+Tuesdays and Thursdays are historically the days that are the heaviest in American universities, with a lot of classes. The café is very convenient and thus attracts both teachers and students. 
+<br>
+
+It would then be advisable to get some more staff on Thursdays or Tuesdays, or maybe promote the café during days where the affluence is low, by putting signs up maybe.</div>
 <div id="container" class="chart" style="width: 1000px; height: 500px;">
 	<script  type='text/javascript'>
 
@@ -808,7 +805,10 @@ var mytype = ['line','area','area','area'];
 </section>
 <section id="section35" >
 <h1>Section 3.5</h1>
-
+<div id='comment'> The cafe offers three kind of drinks: coffee, soda and juice. Firstly, juices are much less popular than both coffee and soda, so the levels of sales for this particular product cannot be explained by anything else than someone randomly wanting a juice.<br><br>
+However, there is a strong effect of temperature for coffee and sodas. Both sodas and coffees are sold to the same levels if the temperature is below 5°C, but the consumption of coffee drops significantly when it reaches 5°C and above. At the same time, sodas sales rise.<br><br>
+This is not an effect of the fact that we have more data points between 0 and 5°C than above 5°C, as proves a Chi Square test for Homogeneity. With a confidence level of 5%, the distribution of coffee and soda are significantly different according to the temperature.<br><br>
+This is explained by the seasonal attraction of such products : coffee is a hot beverage that is good to warm up in cold climates, but customers prefer a refreshing and cold soda as temperature rises. Thus there are actions that can be taken according to the weather forecast and the season: in winter, it might be wiser to advertise coffee, and keep an eye on the forecasted temperatures for the next day to promote soda more as soon as it gets warmer.</div>
 <div id="container35" class="chart" style="width: 1000px; height: 500px;"></div>
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
@@ -914,8 +914,8 @@ itemStyle: {
 });</script>
 </section>
 <section id="section4">
-<h1>Section 4</h1>
-
+<h1>Section 4 : When does waste occur at all?</h1>
+<div id='comment'>Waste is obviously hard to handle at first. It needs to be tuned so as to keep it to minimum.  This requires time, and habit, which explains why there is a high-waste burn-in period during the first week and after the return from spring break. There definitely seems to be a learning curve in managing the stocks so as not to waste too many items: the students are adjusting to the number of customers they expect to have.</div>
 <script src="https://code.highcharts.com/modules/heatmap.js"></script>
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
 
@@ -1185,7 +1185,13 @@ doChunk();
 <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 <section id="section5">
 <h1>Section 5</h1>
-<div id='container5' class='chart' >
+<div id='comment'>Each day, a student commands products for the next day and expired products are thrown away.<br><br> 
+Thus the number of commanded items equals the sum of the items sold and the wasted items each week.<br><br>
+We see that students running the café tend to order a few more units than they would need if sales stayed constant from week to week. It is to ensure they do not run out in case of a special event.
+However, each week, the total umber of commanded itemsgets closer to the number of items that were sold the previous week : the students are learning and adapting their commands on the demand of the previous week. This is a “natural” adaptation and their stock management is getting wiser by the week.<br><br>
+
+Thus, reducing the waste is not something that requires a strong punctual action, but is a learning phenomenon that needs time to find its optimum. There is nothing to advise to these students on waste reduction but to closely monitor previous sales and react on it.</div>
+<div id='container5' class='chart' style="margin:0px 150px 150px 0px;">
 <script type='text/javascript'>
 d3.csv('https://mlegall.github.io/Dataviz_CAFE/data.csv',function (data) {
 // CSV section
